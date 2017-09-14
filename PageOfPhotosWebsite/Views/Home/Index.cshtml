@@ -1,0 +1,18 @@
+﻿@model List<PageOfPhotosWebsite.Models.PageRef>
+
+@{
+    ViewData["Title"] = "Current Users";
+}
+
+<h2>[DIRECT API] Anyone can READ pageofphotos.com.</h2><h3>To get YOUR OWN PAGE, <a href="https://pageofphotos-register-twitter.azurewebsites.net/api/HttpTriggerRegisterUserFromTwitter">click here</a> (NOTE: you will need to authenticate with Twitter)</h3>
+<h2>[VIA FUNCTION PROXY] Anyone can READ pageofphotos.com.</h2><h3>To get YOUR OWN PAGE, <a href="https://pageofphotos-registration.azurewebsites.net/">click here</a> (NOTE: you will need to authenticate with Twitter)</h3>
+
+<fieldset>
+    <legend>Members</legend>
+    <ol>
+        @foreach (var item in Model)
+            {
+            <li><img src="@item.UserAvatarUrl" height="25" /><a href="/Home/Page/@item.Slug">@item.Name (@item.Slug)</a></li>
+        }
+    </ol>
+</fieldset>

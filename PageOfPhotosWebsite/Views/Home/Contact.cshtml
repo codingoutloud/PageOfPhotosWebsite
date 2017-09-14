@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+
+<h4>User.Identity.IsAuthenticated: @User.Identity.IsAuthenticated</h4>
+<h4>Managed Thread Id: @System.Threading.Thread.CurrentThread.ManagedThreadId</h4>
+<h2>Claims inside Current Thread</h2>
+<h4><em>Claim Type</em> &rarr; <em>Claim Value</em></h4>
+<ol>
+    @if (User.Identity.IsAuthenticated)
+    {
+        foreach (var claim in ((System.Security.Claims.ClaimsPrincipal)(User.Identity)).Claims)
+        {
+            <li>@Html.Raw(claim.Type) &rarr; <strong>@claim.Value</strong> [ValueType = @claim.ValueType] (User)</li>
+        }
+    }
+</ol>
+
+<address>
+    Running from the Microsoft Azure cloud!<br />
+    <abbr title="Phone">T:</abbr>
+    <a href="https://twitter.com/pageofphotos">@@pageofphotos</a>
+</address>
+
+<address>
+    <strong>Looking for help?</strong> Send us a tweet: <a href="https://twitter.com/pageofphotos">@@pageofphotos</a><br />
+</address>
